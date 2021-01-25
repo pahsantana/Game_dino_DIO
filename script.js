@@ -12,6 +12,10 @@ function handleKeyUp(event) {
   }
 }
 
+function replay(){
+  window.location.reload();
+}
+
 function jump() {
   isJumping = true;
 
@@ -55,7 +59,7 @@ function startGame(){
       } else if (cactusPosition > 0 && cactusPosition < 60 && position < 60) {
         // Game over
         clearInterval(leftInterval);
-        document.body.innerHTML = '<img class="game-over" src="game_over.png" alt="Imagem fim de jogo">';
+        document.body.innerHTML = '<img class="game-over" src="game_over.png" alt="Imagem fim de jogo"> <button class="btn" onclick="replay();">Replay</button>';
       } else {
         cactusPosition -= 10;
         cactus.style.left = cactusPosition + 'px';
