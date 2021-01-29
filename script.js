@@ -1,5 +1,8 @@
 const dino = document.querySelector('.dino');
 const background = document.querySelector('.background');
+const btn = document.querySelector('.btn');
+var score = document.querySelector('.score');
+var point = 0;
 
 let isJumping = false;
 let position = 0;
@@ -54,12 +57,17 @@ function startGame(){
     let leftInterval = setInterval(() => {
       if (cactusPosition < -60) {
         // Saiu da tela
+        if (cactusPosition < 0) {
+          point++;
+          score.textContent = point;
+        }
         clearInterval(leftInterval);
         background.removeChild(cactus);
       } else if (cactusPosition > 0 && cactusPosition < 60 && position < 60) {
         // Game over
         clearInterval(leftInterval);
         document.body.innerHTML = '<img class="game-over" src="game_over.png" alt="Imagem fim de jogo"> <button class="btn" onclick="replay();">Replay</button>';
+        alert("YOU LOST DEAR!")
       } else {
         cactusPosition -= 10;
         cactus.style.left = cactusPosition + 'px';
@@ -81,6 +89,10 @@ function startGame(){
     let leftInterval = setInterval(() => {
       if (pterodatiloPosition < -60) {
         // Saiu da tela
+        if (cactusPosition < 0) {
+          point++;
+          score.textContent = point;
+        }
         clearInterval(leftInterval);
         background.removeChild(pterodatilo);
       } else if (pterodatiloPosition > 0 && pterodatiloPosition < 60 && position < 60) {
